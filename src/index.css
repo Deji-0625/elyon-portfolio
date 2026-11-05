@@ -1,0 +1,1719 @@
+/* Base Reset & Variables based on Brand Guidelines */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-green: #304F4F;
+  /* Deep Heritage Green */
+  --secondary-teal: #3D5C5C;
+  /* Forest Teal */
+  --support-teal: #677F7F;
+  /* Muted Sage Teal */
+  --neutral-grey: #A1B3B3;
+  /* Soft Grey-Green */
+  --bg-white: #F1F5F5;
+  /* Cloud White */
+  --accent-orange: #E58A3A;
+  /* Warm Orange */
+}
+
+/* --- CUSTOM CURSOR LOGIC --- */
+/* Hide the default cursor everywhere */
+@media (pointer: fine) {
+
+  body,
+  a,
+  button,
+  input,
+  .ag-panel,
+  .tool-interactive,
+  .ba-nav-item {
+    cursor: none !important;
+  }
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  pointer-events: none;
+  /* Crucial: stops the cursor from blocking clicks */
+  z-index: 99999;
+}
+
+/* Fallback: completely hide the custom cursor on mobile/touch screens */
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
+body {
+  background-color: var(--bg-white);
+  color: var(--primary-green);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+.logo {
+  font-family: 'Manrope', sans-serif;
+  color: var(--primary-green);
+}
+
+.serif-heading {
+  font-family: 'DM Serif Display', serif;
+  font-weight: normal;
+}
+
+/* Typography & Links */
+a {
+  text-decoration: none;
+  color: var(--primary-green);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-orange);
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5%;
+  position: sticky;
+  top: 0;
+  background-color: rgba(241, 245, 245, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  border-bottom: 1px solid var(--neutral-grey);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+nav a {
+  margin-left: 2.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* Hero Section */
+.hero {
+  padding: 8rem 5% 6rem;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.tagline {
+  color: var(--accent-orange);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  font-size: 4.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.hero-subtext {
+  color: var(--secondary-teal);
+  font-size: 1.25rem;
+  margin-bottom: 2.5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+/* --- ORIGIN BUTTON STYLES --- */
+.origin-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.5rem;
+  padding: 0 2.5rem;
+  border-radius: 999px;
+  /* Pill shape */
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.origin-btn:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Primary Variant (Deep Green base, Orange fill) */
+.origin-btn-primary {
+  background-color: var(--primary-green);
+  color: var(--bg-white);
+  border-color: var(--primary-green);
+}
+
+.origin-btn-primary .origin-btn-fill {
+  background-color: var(--accent-orange);
+}
+
+.origin-btn-primary.origin-filled {
+  color: #ffffff;
+  border-color: var(--accent-orange);
+}
+
+/* Outline Variant (Transparent base, Dark Green fill) */
+.origin-btn-outline {
+  background-color: transparent;
+  color: var(--primary-green);
+  border-color: var(--primary-green);
+}
+
+.origin-btn-outline .origin-btn-fill {
+  background-color: var(--primary-green);
+}
+
+.origin-btn-outline.origin-filled {
+  color: var(--bg-white);
+}
+
+/* The Expanding Fill Circle */
+.origin-btn-fill {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* The Text Layer (Stays above the fill) */
+.origin-btn-text {
+  position: relative;
+  z-index: 10;
+}
+
+/* --- ABOUT / PHILOSOPHY SPLIT SECTION --- */
+.about-section {
+    background-color: var(--bg-white); /* Flipped to Cloud White */
+    color: var(--primary-green);      /* Text flipped to Deep Green */
+    padding: 8rem 5%;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+@media (min-width: 900px) {
+    .about-container {
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 6rem;
+    }
+}
+
+.about-image-wrapper {
+    width: 100%;
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    max-height: 650px;
+    box-shadow: 0 30px 60px rgba(48, 79, 79, 0.15); /* Softer shadow for white background */
+}
+
+.about-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-image-wrapper:hover .about-image {
+    transform: scale(1.05);
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.about-label {
+    color: var(--accent-orange);
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-content h2 {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--primary-green); /* Dark green heading */
+    letter-spacing: -0.02em;
+}
+
+.about-content p {
+    color: var(--secondary-teal); /* Rich teal-grey for readability on white */
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    max-width: 95%;
+}
+
+.about-founder {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--primary-green);
+    border-top: 1px solid rgba(48, 79, 79, 0.15); /* Dark green hairline */
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    display: inline-block;
+}
+
+/* --- SERVICES (VISUAL BENTO GRID) --- */
+.services-section {
+    text-align: center;
+    padding: 9rem 5%;
+    /* Uses your official secondary brand color for a rich, intentional contrast block */
+    background-color: var(--secondary-teal); 
+    color: var(--bg-white);
+    position: relative;
+}
+
+.services-section h2 {
+    color: var(--bg-white);
+}
+
+.services-intro {
+    color: var(--neutral-grey);
+    margin-bottom: 4rem;
+    font-size: 1.15rem;
+}
+
+/* Two-Column Flex Layout */
+.bento-container {
+  display: flex;
+  gap: 1.5rem;
+  /* Gap between Left and Right columns */
+  max-width: 1100px;
+  margin: 0 auto;
+  min-height: 580px;
+}
+
+.bento-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.bento-col-left {
+  flex: 1.3;
+  /* Makes the single left card slightly wider */
+}
+
+.bento-col-right {
+  flex: 1;
+  gap: 0.8rem;
+  /* TIGHTENS the gap between the two stacked cards */
+}
+
+/* Forces the Reveal wrappers to fill the height */
+.bento-col .reveal-transition {
+  display: flex;
+  flex: 1;
+}
+
+/* Base Box Styling */
+.bento-box {
+  border-radius: 1.5rem;
+  padding: 3rem 2.5rem;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  width: 100%;
+}
+
+.bento-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(48, 79, 79, 0.08);
+}
+
+.bento-box h3 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+}
+
+.bento-box strong {
+  font-family: 'Manrope', sans-serif;
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  letter-spacing: -0.2px;
+}
+
+.bento-box p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 90%;
+}
+
+/* Left Box Theme */
+.bento-dark {
+  background-color: var(--primary-green);
+  color: var(--bg-white);
+}
+
+.bento-dark h3,
+.bento-dark strong {
+  color: var(--bg-white);
+}
+
+.bento-dark p {
+  color: var(--neutral-grey);
+}
+
+/* Top Right Theme */
+.bento-light {
+  background-color: #ffffff;
+  color: var(--primary-green);
+}
+
+.bento-light strong {
+  color: var(--accent-orange);
+}
+
+.bento-light p {
+  color: var(--support-teal);
+}
+
+/* Bottom Right Theme */
+.bento-accent {
+  background-color: var(--accent-orange);
+  color: #ffffff;
+}
+
+.bento-accent h3,
+.bento-accent strong {
+  color: #ffffff;
+}
+
+.bento-accent p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Mobile Fallback */
+@media (max-width: 900px) {
+  .bento-container {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .bento-col-right {
+    gap: 1.5rem;
+  }
+
+  .bento-box {
+    min-height: 300px;
+  }
+}
+
+/* Responsive adjustments for mobile (stacks them all nicely) */
+@media (max-width: 900px) {
+  .bento-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    min-height: auto;
+  }
+
+  .bento-tall,
+  .bento-top-right,
+  .bento-bottom-right {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    min-height: 320px;
+  }
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 900px) {
+  .bento-container {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-wide,
+  .bento-square,
+  .bento-full {
+    grid-column: span 1;
+  }
+
+  .bento-full {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .bento-full .bento-content-left {
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .bento-wide p {
+    max-width: 100%;
+  }
+}
+
+/* Works Gallery */
+.works-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  display: block;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  display: block;
+}
+
+.project-info {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.project-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.2rem;
+}
+
+.project-info p {
+  color: var(--support-teal);
+  font-size: 0.9rem;
+}
+
+/* --- MEGA FOOTER --- */
+.mega-footer {
+    background-color: var(--primary-green); 
+    color: var(--bg-white);
+    padding: 8rem 5% 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 85vh;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-huge-text {
+    font-size: clamp(4rem, 14vw, 12rem);
+    font-weight: 800;
+    font-family: 'Manrope', sans-serif;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    margin-bottom: 2rem;
+    color: var(--bg-white);
+}
+
+.footer-sub {
+    color: var(--neutral-grey);
+    font-size: 1.25rem;
+    max-width: 550px;
+    margin: 0 auto 4rem;
+}
+
+/* Pill-Shaped Email Form */
+.footer-form {
+    display: flex;
+    align-items: center;
+    background: rgba(241, 245, 245, 0.05); 
+    padding: 0.5rem;
+    border-radius: 999px;
+    border: 1px solid rgba(241, 245, 245, 0.2);
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto 6rem;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.footer-form:focus-within {
+    border-color: var(--accent-orange);
+    background: rgba(241, 245, 245, 0.1);
+}
+
+.footer-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--bg-white);
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+}
+
+.footer-input::placeholder {
+    color: rgba(241, 245, 245, 0.5);
+}
+
+.footer-submit {
+    background-color: var(--accent-orange);
+    color: var(--bg-white);
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-family: 'Manrope', sans-serif;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s ease;
+}
+
+.footer-submit:hover {
+    transform: scale(1.05);
+    background-color: #f09543;
+}
+
+/* Footer Bottom Layout */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    border-top: 1px solid rgba(241, 245, 245, 0.2);
+    padding-top: 2.5rem;
+}
+
+/* --- RESTORED SOCIALS & COPYRIGHT --- */
+.footer-socials {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.footer-socials a {
+    color: var(--bg-white);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+.footer-socials a:hover {
+    color: var(--accent-orange);
+}
+
+.footer-copyright {
+    color: var(--neutral-grey);
+    font-size: 0.85rem;
+    text-align: right;
+    line-height: 1.5;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .footer-copyright {
+        text-align: center;
+    }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .footer-copyright {
+    text-align: center;
+  }
+}
+
+/* --- CINEMATIC LIGHTBOX MODAL (PORTAL VERSION) --- */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999999;
+    background-color: rgba(11, 19, 19, 0.85); /* Deep dark tint */
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3vw;
+    animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: modalScaleUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalScaleUp {
+    from { transform: scale(0.85); }
+    to { transform: scale(1); }
+}
+
+#modal-image-display {
+    max-height: 75vh;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 0.75rem;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(241, 245, 245, 0.15);
+}
+
+.modal-text {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.modal-text h3 {
+    font-size: 1.75rem;
+    color: var(--bg-white);
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.modal-text p {
+    color: var(--accent-orange);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.close-modal {
+    position: absolute;
+    top: -3rem;
+    right: 0;
+    color: var(--neutral-grey);
+    font-size: 3.5rem;
+    font-weight: 300;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    line-height: 1;
+}
+
+.close-modal:hover {
+    color: var(--accent-orange);
+}
+
+/* --- BRAND APPART STYLE UI ISLANDS --- */
+
+/* 1. Independent Top-Left Logo */
+.fixed-logo {
+  position: fixed;
+  top: 2rem;
+  left: 5%;
+  z-index: 1000;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  font-family: 'Manrope', sans-serif;
+  color: var(--primary-green);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fixed-logo-hidden {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
+
+.fixed-logo-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* 2. Top-Center Horizontal Dock */
+.ba-nav-wrapper {
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+  z-index: 1000;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ba-nav-hidden {
+  transform: translate(-50%, -150%);
+}
+
+.ba-nav-visible {
+  transform: translate(-50%, 0);
+}
+
+/* The outer pill holding the icons (Updated to Dark Frosted Glass) */
+.ba-nav-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(11, 19, 19, 0.65); /* Premium dark translucent base */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 0.6rem 1.2rem;
+  border-radius: 99px; /* Perfect pill */
+  border: 1px solid rgba(241, 245, 245, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* The individual icon boxes */
+.ba-nav-item {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  background-color: transparent;
+  color: rgba(241, 245, 245, 0.6); /* Dimmed off-white */
+  border: none;
+  cursor: pointer;
+  
+  /* The magic Awwwards easing curve */
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: bottom center; /* Makes it grow upward, not outward */
+}
+
+/* 1. THE HOVERED ICON: Grows, lifts, and glows Orange */
+.ba-nav-item:hover {
+  transform: scale(1.25) translateY(-4px);
+  color: var(--accent-orange, #E58A3A);
+  background-color: transparent;
+  filter: drop-shadow(0 8px 12px rgba(229, 138, 58, 0.25));
+}
+
+/* 2. THE SIBLING EFFECT: Shrinks and dims the icons you AREN'T hovering over */
+.ba-nav-container:has(.ba-nav-item:hover) .ba-nav-item:not(:hover) {
+  transform: scale(0.85);
+  opacity: 0.3;
+}
+
+/* Make sure the SVGs inside scale nicely */
+.ba-nav-item svg {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* The Pop-out Hover Tooltip */
+.ba-nav-label {
+  position: absolute;
+  top: calc(100% + 18px); /* Drops directly below the icon */
+  background-color: #0b1313;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: 'Manrope', sans-serif;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0;
+  
+  /* We scale it down slightly so when the parent button grows 1.25x, the text doesn't look massive */
+  transform: translateY(-10px) scale(0.8);
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  white-space: nowrap;
+}
+
+/* Triggers the tooltip drop-down */
+.ba-nav-item:hover .ba-nav-label {
+  opacity: 1;
+  transform: translateY(0) scale(0.8);
+}
+
+/* --- SCROLL REVEAL ANIMATIONS --- */
+.reveal-transition {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero Text Swap Logic */
+.dynamic-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-text-wrapper {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tech-text-container,
+.standard-text-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.fade-out {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
+
+/* --- INFINITE MARQUEE TICKER --- */
+.marquee-container {
+  width: 100%;
+  background-color: var(--accent-orange);
+  /* Vibrant brand color */
+  color: #ffffff;
+  padding: 1.5rem 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10;
+}
+
+.marquee-content {
+  display: flex;
+  white-space: nowrap;
+  animation: scroll-marquee 25s linear infinite;
+  will-change: transform;
+}
+
+/* Pause the scrolling when the user hovers over it */
+.marquee-container:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0 2rem;
+}
+
+/* --- GHOST MARQUEE TICKER --- */
+.marquee-container {
+  width: 100%;
+  background-color: transparent;
+  /* No more orange block */
+  padding: 2rem 0 4rem;
+  /* Breathes naturally with the layout */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  border: none;
+  position: relative;
+  z-index: 1;
+  /* Pushed to the background */
+}
+
+.marquee-content {
+  display: flex;
+  white-space: nowrap;
+  animation: scroll-marquee 40s linear infinite;
+  /* Much slower, more elegant */
+  will-change: transform;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  /* Massive typography */
+  font-weight: 800;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  padding: 0 1rem;
+
+  /* The Ghost Effect */
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(48, 79, 79, 0.15);
+  /* Faint Deep Heritage Green outline */
+}
+
+.marquee-star {
+  margin: 0 1.5rem;
+  font-size: 2rem;
+  color: rgba(48, 79, 79, 0.15);
+}
+
+@keyframes scroll-marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* --- INTERACTIVE TOOL CLOUD --- */
+.floating-tools-container {
+  width: 100%;
+  padding: 3rem 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+}
+
+/* The continuous horizontal drift */
+.floating-tools-track {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  /* Wide spacing for a minimalist feel */
+  width: max-content;
+  animation: tools-drift 40s linear infinite;
+  will-change: transform;
+}
+
+/* Pauses the drift if they hover over the area */
+.floating-tools-container:hover .floating-tools-track {
+  animation-play-state: paused;
+}
+
+/* 
+   The Float Wrapper 
+   Bobs up and down independently of the drift 
+*/
+.tool-float-wrapper {
+  animation: tool-bob 4s ease-in-out infinite alternate;
+  padding: 1rem;
+}
+
+/* 
+   The Interactive Icon
+   Starts muted and small. Snaps to life on hover.
+*/
+.tool-interactive {
+  width: 28px;
+  height: 28px;
+  color: var(--support-teal);
+  opacity: 0.4;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: crosshair;
+}
+
+.tool-interactive:hover {
+  transform: scale(1.6) translateY(-5px);
+  opacity: 1;
+  color: var(--hover-color);
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+}
+
+.tool-interactive svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Keyframes */
+@keyframes tools-drift {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-33%);
+  }
+
+  /* Translates based on loop duplication */
+}
+
+@keyframes tool-bob {
+  0% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(8px);
+  }
+}
+
+/* --- CINEMATIC PRELOADER --- */
+.preloader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #0b1313;
+  /* Premium near-black */
+  color: #ffffff;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* This class gets applied to slide the whole screen up and away */
+.preloader-slide-up {
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+.preloader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.preloader-brand {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent-orange);
+}
+
+.preloader-counter {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+/* --- TACTILE FILM GRAIN --- */
+.film-grain {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  /* Crucial: lets you click through it */
+  z-index: 999998;
+  /* Sits right under the preloader and cursor */
+  opacity: 0.05;
+  /* Barely visible, just enough for texture */
+  /* Mathematical SVG Noise */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  animation: grain-dance 8s steps(10) infinite;
+}
+
+/* The rapid, jagged movement creates the analog illusion */
+@keyframes grain-dance {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  10% {
+    transform: translate(-5%, -10%);
+  }
+
+  20% {
+    transform: translate(-15%, 5%);
+  }
+
+  30% {
+    transform: translate(7%, -25%);
+  }
+
+  40% {
+    transform: translate(-5%, 25%);
+  }
+
+  50% {
+    transform: translate(-15%, 10%);
+  }
+
+  60% {
+    transform: translate(15%, 0%);
+  }
+
+  70% {
+    transform: translate(0%, 15%);
+  }
+
+  80% {
+    transform: translate(3%, 35%);
+  }
+
+  90% {
+    transform: translate(-10%, 10%);
+  }
+}
+
+/* --- 3D WORKS WHEEL STYLES --- */
+.ww-section {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  /* Takes up most of the screen to give the drum room */
+  min-height: 24rem;
+  overflow: hidden;
+  user-select: none;
+  background-color: var(--primary-green);
+  color: #F1F5F5;
+}
+
+.ww-stage {
+  position: absolute;
+  inset: 0;
+  cursor: grab;
+  touch-action: pan-x;
+  outline: none;
+}
+
+.ww-stage:active {
+  cursor: grabbing;
+}
+
+.ww-drum {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+}
+
+.ww-card {
+  position: absolute;
+  backface-visibility: hidden;
+  display: block;
+}
+
+.ww-card-inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 1rem;
+  background-color: #0b1313;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+}
+
+.ww-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  transition: transform 0.5s ease;
+}
+
+.ww-card:hover .ww-img {
+  transform: scale(1.05);
+  /* Slight zoom on hover */
+}
+
+/* Hover Action Pill */
+.ww-action {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #0b1313;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: 'Manrope', sans-serif;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.ww-card:hover .ww-action {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ww-action-icon {
+  width: 12px;
+  height: 12px;
+}
+
+/* Typographic Overlays */
+.ww-label {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: rgba(241, 245, 245, 0.1);
+  /* Ghostly background text */
+}
+
+.ww-title {
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* Side Index Navigation */
+.ww-index {
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  text-align: right;
+  line-height: 2;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: rgba(241, 245, 245, 0.4);
+}
+
+.ww-index-btn {
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: inherit;
+  font-family: 'Manrope', sans-serif;
+  font-size: inherit;
+  transition: color 0.3s ease;
+  outline: none;
+}
+
+.ww-index-btn:hover {
+  color: rgba(241, 245, 245, 0.8);
+}
+
+.ww-index-btn.active {
+  color: var(--accent-orange);
+  font-weight: 700;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  /* ... keep your existing properties (min-height, display, etc) ... */
+}
+
+.hero-text-wrapper {
+  position: relative;
+  z-index: 10;
+  /* ... keep your existing properties ... */
+}
+
+/* --- METHODOLOGY (PROCESS) SECTION - DARK BRAND THEME --- */
+.methodology-section {
+    background-color: var(--primary-green);
+    color: var(--bg-white);
+    padding: 10rem 5%;
+    position: relative;
+    z-index: 10;
+}
+
+.methodology-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (min-width: 800px) {
+    .methodology-container {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 8rem;
+    }
+}
+
+.methodology-sticky {
+    flex: 1;
+    position: sticky;
+    top: 30vh; 
+}
+
+.methodology-sticky h2 {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    margin: 0 0 1.5rem 0;
+    line-height: 1;
+    color: var(--bg-white);
+}
+
+.methodology-sticky p {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--neutral-grey);
+    max-width: 380px;
+}
+
+.methodology-steps {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Premium Interactive Steps */
+.methodology-step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-top: 1px solid rgba(241, 245, 245, 0.1); /* Ghostly white hairline */
+    padding: 4rem 0;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+    cursor: default;
+}
+
+.methodology-step:hover {
+    padding-left: 2.5rem;
+    border-top-color: var(--accent-orange);
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.step-number {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--accent-orange);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.methodology-step h3 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin: 0;
+    letter-spacing: -0.02em;
+    transition: font-weight 0.3s ease;
+    position: relative;
+    z-index: 2;
+    color: var(--bg-white);
+}
+
+.methodology-step:hover h3 {
+    font-weight: 600;
+}
+
+.methodology-step p {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--neutral-grey);
+    margin: 0;
+    max-width: 90%;
+    position: relative;
+    z-index: 2;
+}
+
+/* Massive Ghost Background Number */
+.step-ghost {
+    position: absolute;
+    right: -2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Manrope', sans-serif;
+    font-size: 14rem;
+    font-weight: 800;
+    color: rgba(241, 245, 245, 0.03); /* Barely visible white outline */
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1;
+}
+
+.methodology-step:hover .step-ghost {
+    right: 2rem; 
+    color: rgba(241, 245, 245, 0.08); /* Illuminates slightly on hover */
+}
+
+/* ==================================================== */
+/* RESPONSIVE DESIGN (MOBILE & TABLET)                  */
+/* ==================================================== */
+
+@media (max-width: 900px) {
+    /* 1. Global Spacing Adjustments */
+    .hero, .about-section, .services-section, .works-section, .methodology-section, .mega-footer {
+        padding-top: 5rem !important;
+        padding-bottom: 5rem !important;
+    }
+
+    /* 2. Floating Navigation & Logo */
+    .fixed-logo {
+        font-size: 1.2rem;
+        top: 1.2rem;
+        left: 5%;
+    }
+    .ba-nav-wrapper {
+        top: 1.2rem;
+        width: 100%;
+        pointer-events: none; /* Let clicks pass through the wrapper */
+    }
+    .ba-nav-container {
+        pointer-events: auto; /* Re-enable clicks on the actual pill */
+        padding: 0.5rem;
+        gap: 0.2rem;
+        /* Slightly scale down the dock for narrow screens */
+        transform: scale(0.9); 
+    }
+
+    /* 3. Hero Section */
+    .hero h1 {
+        font-size: 2.8rem;
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.5px;
+    }
+    .hero-subtext {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    .origin-btn {
+        width: 100%;
+    }
+
+    /* 4. Methodology (Process) */
+    .methodology-sticky {
+        position: relative; /* Disables the sticky effect on mobile */
+        top: 0;
+        margin-bottom: 2rem;
+    }
+    .methodology-sticky h2 {
+        font-size: 3.2rem;
+    }
+    .methodology-step {
+        padding: 2.5rem 0;
+    }
+    .step-ghost {
+        font-size: 8rem;
+        right: -1rem;
+    }
+    
+    /* 5. Services (Bento Grid) */
+    .bento-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .bento-col-left, .bento-col-right {
+        width: 100%;
+    }
+    .bento-box {
+        min-height: 400px; /* Gives the background images enough vertical room */
+    }
+    .bento-box h3 {
+        font-size: 2rem;
+    }
+
+    /* 6. About (The Vision) */
+    .about-content h2 {
+        font-size: 2.4rem;
+    }
+    .about-image-wrapper {
+        max-height: 450px;
+        margin-top: 2rem;
+    }
+
+    /* 7. Mega Footer */
+    .footer-huge-text {
+        font-size: clamp(3rem, 15vw, 5rem);
+        word-break: break-word;
+    }
+    /* Break the pill form into a stacked mobile form */
+    .footer-form {
+        flex-direction: column;
+        background: transparent;
+        border: none;
+        gap: 1rem;
+        padding: 0;
+    }
+    .footer-input {
+        width: 100%;
+        border-radius: 999px;
+        border: 1px solid rgba(241, 245, 245, 0.2);
+        background: rgba(241, 245, 245, 0.05);
+        text-align: center;
+    }
+    .footer-submit {
+        width: 100%;
+    }
+    .footer-socials {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+    
+    /* 8. Lightbox Modal Mobile Fixes */
+    .modal-content {
+        max-width: 95vw;
+        max-height: 85vh;
+    }
+    /* Move the close button inside the screen bounds so it doesn't get cut off at the top */
+    .close-modal {
+        position: fixed;
+        top: 1rem;
+        right: 1.5rem;
+        font-size: 3rem;
+        background: rgba(11, 19, 19, 0.5);
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(10px);
+    }
+}
+
+/* Ensure Accordion Gallery doesn't stretch too tall on narrow phones */
+@media (max-width: 600px) {
+    .accordion-gallery {
+        height: 400px !important; 
+    }
+}

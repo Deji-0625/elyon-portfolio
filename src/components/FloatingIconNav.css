@@ -1,0 +1,50 @@
+/* --- PREMIUM FLOATING ICON NAV --- */
+
+/* The flex container holding your icons */
+.floating-nav-container {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: rgba(11, 19, 19, 0.6); /* Dark translucent pill */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(241, 245, 245, 0.08);
+    border-radius: 99px;
+}
+
+/* The individual icon buttons/links */
+.nav-icon-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(241, 245, 245, 0.6); /* Dimmed off-white by default */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    
+    /* The magic Awwwards easing curve */
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+    transform-origin: bottom center; /* Makes it grow upward, not outward */
+}
+
+/* 1. THE HOVERED ICON: Grows, lifts, and glows Orange */
+.nav-icon-item:hover {
+    transform: scale(1.25) translateY(-4px);
+    color: var(--accent-orange, #E58A3A);
+    filter: drop-shadow(0 8px 12px rgba(229, 138, 58, 0.25));
+}
+
+/* 2. THE SIBLING EFFECT: Shrinks and dims the icons you AREN'T hovering over */
+.floating-nav-container:has(.nav-icon-item:hover) .nav-icon-item:not(:hover) {
+    transform: scale(0.85);
+    opacity: 0.3;
+}
+
+/* Make sure the SVGs inside scale nicely */
+.nav-icon-item svg {
+    width: 24px;
+    height: 24px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
